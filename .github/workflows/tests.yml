@@ -1,0 +1,40 @@
+name: Tests
+
+#this activates on push and PRs to main
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    test:
+        name: Python ${{ matrix.python-version }} on ${{ matrix.os }}
+        runs-on: ${{ matrix.os }}
+
+        #Matrix: it executes job on each combination of OS and Python
+        strategy:
+            fail-fast: false #if a combination fails, the others will continue to run
+            matrix:
+                os: [ubuntu-latest, windows-latest]
+                python-version: ["3.11", "3.12", "3.13"]
+
+        steps:
+            # 1. Download the code from the repo
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            # 2. Install Python version requested
+            - name: Set up Python ${{ matrix.python-version }}
+              uses: actions/setup-python@v5
+              with:
+                python-version: ${{ matrix.python-version }}
+                cache: "pip" # cache of dependencies installed with pip to speed up subsequent runs
+
+            # 3. Install project with dev dependencies
+            - name: Install dependencies
+              run: pip install -e ".[dev]"
+
+            # 4. Execute tests with coverage
+            - name: Run tests
+              run: pytest --cov=devlog --cov-report=xml
