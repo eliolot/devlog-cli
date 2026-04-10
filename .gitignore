@@ -1,0 +1,46 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+.eggs/
+
+# pytest and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# mypy
+.mypy_cache/
+
+# ruff
+.ruff_cache/
+
+# VS Code — ignore personal settings
+.vscode/extensions.json
+
+# environments and secrets
+.env
+.env.*
+*.secret
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# logs
+*.log
+devlog_test_data/

@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "devlog: add",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "devlog.cli",
+      "args": ["add", "test nota di debug"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "devlog: today",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "devlog.cli",
+      "args": ["today"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "devlog: stats",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "devlog.cli",
+      "args": ["stats"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

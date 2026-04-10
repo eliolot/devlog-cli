@@ -1,0 +1,34 @@
+# version schema config file
+default_language_version:
+  python: python3.13
+
+repos:
+  # quality generic hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace        # removes trailing whitespace
+      - id: end-of-file-fixer          # ensures newline at end of file
+      - id: check-yaml                 # validates YAML files
+      - id: check-toml                 # validates TOML files
+      - id: check-merge-conflict       # blocks merge conflicts
+      - id: check-added-large-files    # blocks large files from being added
+        args: ["--maxkb=500"]
+
+  # Ruff: linter + formatter
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.7
+    hooks:
+      - id: ruff                       # linting
+        args: ["--fix"]                # automatically fix issues where possible
+      - id: ruff-format                # formatting
+
+  # Mypy: type checking
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - pydantic>=2.7
+          - typer>=0.12
+        args: ["--ignore-missing-imports"]
