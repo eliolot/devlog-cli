@@ -17,7 +17,7 @@ jobs:
             fail-fast: false #if a combination fails, the others will continue to run
             matrix:
                 os: [ubuntu-latest, windows-latest]
-                python-version: ["3.11", "3.12", "3.13"]
+                python-version: ["3.13"]
 
         steps:
             # 1. Download the code from the repo
